@@ -14,7 +14,7 @@ class DiamondRecommendationSystem:
             print("Error: The file was not found. Please check the file path.")
             self.df = None
 
-    def filter_diamonds(self, cut=None, carat_weight_weight=None, clarity=None):
+    def filter_diamonds(self, cut=None, carat_weight=None, clarity=None):
         """
         Filter diamonds based on user preferences: cut, carat_weight, and clarity.
         """
@@ -106,7 +106,7 @@ class DiamondRecommendationSystem:
 
 
 # Example usage
-FILE_PATH = "diamonds_updated.csv"
+FILE_PATH = "diamonds.csv"
 recommendation_system = DiamondRecommendationSystem(FILE_PATH)
 
 # Ask for user input for cut, carat_weight, and clarity
@@ -124,7 +124,7 @@ while not recommendation_system.validate_cut(cut):
 carat_weight = input("Enter the desired carat_weight (e.g., 1.0, 1.5, 2.0): ").strip()
 
 # Validate carat_weight input
-while not recommendation_system.validate_carat_weight(carat_weight):
+while not recommendation_system.validate_carat(carat_weight):
     print("Error: Invalid input for carat_weight. Please enter a numeric value.")
     carat_weight = input("Enter the desired carat_weight (e.g., 1.0, 1.5, 2.0): ").strip()
 
