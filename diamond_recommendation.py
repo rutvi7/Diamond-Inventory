@@ -14,9 +14,9 @@ class DiamondRecommendationSystem:
             print("Error: The file was not found. Please check the file path.")
             self.df = None
 
-    def filter_diamonds(self, cut=None, carat=None, clarity=None):
+    def filter_diamonds(self, cut=None, carat_weight_weight=None, clarity=None):
         """
-        Filter diamonds based on user preferences: cut, carat, and clarity.
+        Filter diamonds based on user preferences: cut, carat_weight, and clarity.
         """
         if self.df is None:
             print("Dataset not loaded. Cannot perform filtering.")
@@ -32,12 +32,12 @@ class DiamondRecommendationSystem:
                 print("Error: 'cut' column not found in the dataset.")
                 return None
 
-        # Filter by carat
-        if carat:
-            if 'carat' in self.df.columns:
-                filtered_df = filtered_df[filtered_df['carat'] == carat]
+        # Filter by carat_weight
+        if carat_weight:
+            if 'carat_weight' in self.df.columns:
+                filtered_df = filtered_df[filtered_df['carat_weight'] == carat_weight]
             else:
-                print("Error: 'carat' column not found in the dataset.")
+                print("Error: 'carat_weight' column not found in the dataset.")
                 return None
 
         # Filter by clarity
@@ -54,15 +54,15 @@ class DiamondRecommendationSystem:
 
         return filtered_df
 
-    def recommend(self, cut=None, carat=None, clarity=None):
+    def recommend(self, cut=None, carat_weight=None, clarity=None):
         """
         Provide diamond recommendations based on user preferences.
         Display all matching diamonds, not just the top 5.
         """
         print("\n--- User Preference-Based Recommendations ---")
-        filtered = self.filter_diamonds(cut=cut, carat=carat, clarity=clarity)
+        filtered = self.filter_diamonds(cut=cut, carat_weight=carat_weight, clarity=clarity)
         if filtered is not None and not filtered.empty:
-            print(filtered[['cut', 'carat', 'clarity']])
+            print(filtered[['cut', 'carat_weight', 'clarity']])
         else:
             print("No diamonds to recommend based on the given preferences.")
 
@@ -74,12 +74,12 @@ class DiamondRecommendationSystem:
             return False
         return True
 
-    def validate_carat(self, carat):
+    def validate_carat(self, carat_weight):
         """
-        Validate that carat is a numeric value.
+        Validate that carat_weight is a numeric value.
         """
         try:
-            float(carat)
+            float(carat_weight)
             return True
         except ValueError:
             return False
@@ -99,7 +99,7 @@ class DiamondRecommendationSystem:
         if 'satotal_sales_price' in self.df.columns:
             top_selling_df = self.df.sort_values(by='total_sales_price', ascending=False).head(top_n)
             print("\n--- Top-Selling Diamonds ---")
-            print(top_selling_df[['cut', 'carat', 'clarity', 'satotal_sales_price']])
+            print(top_selling_df[['cut', 'carat_weight', 'clarity', 'satotal_sales_price']])
         else:
             print("Error: 'total_sales_price' column not found for top-selling recommendation.")
 
@@ -109,7 +109,7 @@ class DiamondRecommendationSystem:
 FILE_PATH = "diamonds_updated.csv"
 recommendation_system = DiamondRecommendationSystem(FILE_PATH)
 
-# Ask for user input for cut, carat, and clarity
+# Ask for user input for cut, carat_weight, and clarity
 print("\nWelcome to the Diamond Recommendation System!")
 
 # Step 1: Ask for Cut type
@@ -120,15 +120,15 @@ while not recommendation_system.validate_cut(cut):
     print("Error: Invalid cut type. Please enter only alphabetic characters (no special characters or numbers).")
     cut = input("Enter the desired cut type (e.g., 'Round', 'Oval', 'Emerald'): ").strip()
 
-# Step 2: Ask for Carat
-carat = input("Enter the desired carat (e.g., 1.0, 1.5, 2.0): ").strip()
+# Step 2: Ask for carat_weight
+carat_weight = input("Enter the desired carat_weight (e.g., 1.0, 1.5, 2.0): ").strip()
 
-# Validate carat input
-while not recommendation_system.validate_carat(carat):
-    print("Error: Invalid input for carat. Please enter a numeric value.")
-    carat = input("Enter the desired carat (e.g., 1.0, 1.5, 2.0): ").strip()
+# Validate carat_weight input
+while not recommendation_system.validate_carat_weight(carat_weight):
+    print("Error: Invalid input for carat_weight. Please enter a numeric value.")
+    carat_weight = input("Enter the desired carat_weight (e.g., 1.0, 1.5, 2.0): ").strip()
 
-carat = float(carat)
+carat_weight = float(carat_weight)
 
 # Step 3: Ask for Clarity
 clarity = input("Enter the desired clarity (e.g., 'VS1', 'VS2', 'SI1'): ").strip()
@@ -139,4 +139,4 @@ while not recommendation_system.validate_clarity(clarity):
     clarity = input("Enter the desired clarity (e.g., 'VS1', 'VS2', 'SI1'): ").strip()
 
 # Step 4: Generate recommendations based on user input
-recommendation_system.recommend(cut=cut, carat=carat, clarity=clarity)
+recommendation_system.recommend(cut=cut, carat_weight=carat_weight, clarity=clarity)
