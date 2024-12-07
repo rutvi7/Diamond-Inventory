@@ -1,6 +1,5 @@
 import pandas as pd
-import re  # Regular expression module for validation
-
+import os  # To detect test environment
 
 class DiamondRecommendationSystem:
     def __init__(self, file_path):
@@ -20,7 +19,7 @@ class DiamondRecommendationSystem:
         """
         if self.df is None:
             print("Dataset not loaded. Cannot perform filtering.")
-            return None
+            return pd.DataFrame()  # Return an empty DataFrame
 
         filtered_df = self.df.copy()
 
@@ -30,7 +29,7 @@ class DiamondRecommendationSystem:
                 filtered_df = filtered_df[filtered_df['cut'].str.lower() == cut.lower()]
             else:
                 print("Error: 'cut' column not found in the dataset.")
-                return None
+                return pd.DataFrame()  # Return an empty DataFrame
 
         # Filter by carat_weight
         if carat_weight:
@@ -38,7 +37,7 @@ class DiamondRecommendationSystem:
                 filtered_df = filtered_df[filtered_df['carat_weight'] == carat_weight]
             else:
                 print("Error: 'carat_weight' column not found in the dataset.")
-                return None
+                return pd.DataFrame()  # Return an empty DataFrame
 
         # Filter by clarity
         if clarity:
@@ -46,33 +45,31 @@ class DiamondRecommendationSystem:
                 filtered_df = filtered_df[filtered_df['clarity'].str.lower() == clarity.lower()]
             else:
                 print("Error: 'clarity' column not found in the dataset.")
-                return None
+                return pd.DataFrame()  # Return an empty DataFrame
 
         if filtered_df.empty:
             print("No diamonds match the given preferences. Please refine your criteria.")
-            return None
+            return pd.DataFrame()  # Return an empty DataFrame
 
         return filtered_df
 
     def recommend(self, cut=None, carat_weight=None, clarity=None):
         """
         Provide diamond recommendations based on user preferences.
-        Display all matching diamonds, not just the top 5.
+        Display all matching diamonds.
         """
         print("\n--- User Preference-Based Recommendations ---")
         filtered = self.filter_diamonds(cut=cut, carat_weight=carat_weight, clarity=clarity)
         if filtered is not None and not filtered.empty:
             print(filtered[['cut', 'carat_weight', 'clarity']])
         else:
-            print("No diamonds to recommend based on the given preferences.")
+            print("No diamonds match the given preferences.")
 
     def validate_cut(self, cut):
         """
         Validate that the cut input contains only alphabetic characters and spaces.
         """
-        if not cut.isalpha() or any(char in cut for char in "!@#$%^&*()_+=-1234567890"):
-            return False
-        return True
+        return cut.isalpha()
 
     def validate_carat(self, carat_weight):
         """
@@ -88,55 +85,14 @@ class DiamondRecommendationSystem:
         """
         Validate that the clarity input contains only letters and numbers (no special characters).
         """
-        if re.match("^[A-Za-z0-9]+$", clarity):  # Only letters and numbers allowed
-            return True
-        return False
-    
-    def recommend_top_selling(self, top_n=5):
-        """
-        Recommend the top-selling diamonds based on sales count or popularity.
-        """
-        if 'satotal_sales_price' in self.df.columns:
-            top_selling_df = self.df.sort_values(by='total_sales_price', ascending=False).head(top_n)
-            print("\n--- Top-Selling Diamonds ---")
-            print(top_selling_df[['cut', 'carat_weight', 'clarity', 'satotal_sales_price']])
-        else:
-            print("Error: 'total_sales_price' column not found for top-selling recommendation.")
+        return clarity.isalnum()
 
 
-
-# Example usage
-FILE_PATH = "diamonds.csv"
-recommendation_system = DiamondRecommendationSystem(FILE_PATH)
-
-# Ask for user input for cut, carat_weight, and clarity
-print("\nWelcome to the Diamond Recommendation System!")
-
-# Step 1: Ask for Cut type
-cut = input("Enter the desired cut type (e.g., 'Round', 'Oval', 'Emerald'): ").strip()
-
-# Validate the cut type
-while not recommendation_system.validate_cut(cut):
-    print("Error: Invalid cut type. Please enter only alphabetic characters (no special characters or numbers).")
+if __name__ == "__main__" and "PYTEST_CURRENT_TEST" not in os.environ:
+    # Only execute when not testing
     cut = input("Enter the desired cut type (e.g., 'Round', 'Oval', 'Emerald'): ").strip()
-
-# Step 2: Ask for carat_weight
-carat_weight = input("Enter the desired carat_weight (e.g., 1.0, 1.5, 2.0): ").strip()
-
-# Validate carat_weight input
-while not recommendation_system.validate_carat(carat_weight):
-    print("Error: Invalid input for carat_weight. Please enter a numeric value.")
-    carat_weight = input("Enter the desired carat_weight (e.g., 1.0, 1.5, 2.0): ").strip()
-
-carat_weight = float(carat_weight)
-
-# Step 3: Ask for Clarity
-clarity = input("Enter the desired clarity (e.g., 'VS1', 'VS2', 'SI1'): ").strip()
-
-# Validate clarity input
-while not recommendation_system.validate_clarity(clarity):
-    print("Error: Invalid clarity input. Please enter letters and numbers only (no special characters).")
+    carat_weight = float(input("Enter the desired carat weight (e.g., 1.0, 1.5): ").strip())
     clarity = input("Enter the desired clarity (e.g., 'VS1', 'VS2', 'SI1'): ").strip()
 
-# Step 4: Generate recommendations based on user input
-recommendation_system.recommend(cut=cut, carat_weight=carat_weight, clarity=clarity)
+    recommendation_system = DiamondRecommendationSystem("diamonds.csv")
+    recommendation_system.recommend(cut=cut, carat_weight=carat_weight, clarity=clarity)
