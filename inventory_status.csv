@@ -1,0 +1,108 @@
+cut,clarity,stock_quantity,sold_quantity,remaining_stock,low_stock
+Asscher,I1,7,0.0,7.0,False
+Asscher,IF,43,0.0,43.0,False
+Asscher,SI1,251,0.0,251.0,False
+Asscher,SI2,70,0.0,70.0,False
+Asscher,VS1,474,0.0,474.0,False
+Asscher,VS2,364,0.0,364.0,False
+Asscher,VVS1,191,0.0,191.0,False
+Asscher,VVS2,296,0.0,296.0,False
+Cushion,I1,17,0.0,17.0,False
+Cushion,I2,2,0.0,2.0,True
+Cushion,IF,13,0.0,13.0,False
+Cushion,SI1,130,0.0,130.0,False
+Cushion,SI2,63,0.0,63.0,False
+Cushion,VS1,110,0.0,110.0,False
+Cushion,VS2,104,0.0,104.0,False
+Cushion,VVS1,32,0.0,32.0,False
+Cushion,VVS2,58,0.0,58.0,False
+Cushion Modified,I1,278,0.0,278.0,False
+Cushion Modified,I2,60,0.0,60.0,False
+Cushion Modified,I3,10,0.0,10.0,False
+Cushion Modified,IF,164,0.0,164.0,False
+Cushion Modified,SI1,848,0.0,848.0,False
+Cushion Modified,SI2,595,0.0,595.0,False
+Cushion Modified,VS1,597,0.0,597.0,False
+Cushion Modified,VS2,786,0.0,786.0,False
+Cushion Modified,VVS1,280,0.0,280.0,False
+Cushion Modified,VVS2,366,0.0,366.0,False
+Emerald,I1,89,0.0,89.0,False
+Emerald,I2,14,0.0,14.0,False
+Emerald,IF,558,0.0,558.0,False
+Emerald,SI1,1362,0.0,1362.0,False
+Emerald,SI2,672,0.0,672.0,False
+Emerald,VS1,2510,0.0,2510.0,False
+Emerald,VS2,1946,0.0,1946.0,False
+Emerald,VVS1,1938,0.0,1938.0,False
+Emerald,VVS2,2002,0.0,2002.0,False
+Heart,I1,167,0.0,167.0,False
+Heart,I2,19,0.0,19.0,False
+Heart,I3,4,0.0,4.0,True
+Heart,IF,253,0.0,253.0,False
+Heart,SI1,924,0.0,924.0,False
+Heart,SI2,894,0.0,894.0,False
+Heart,VS1,752,0.0,752.0,False
+Heart,VS2,756,0.0,756.0,False
+Heart,VVS1,506,0.0,506.0,False
+Heart,VVS2,499,0.0,499.0,False
+Marquise,I1,133,0.0,133.0,False
+Marquise,I2,22,0.0,22.0,False
+Marquise,I3,5,0.0,5.0,False
+Marquise,IF,121,0.0,121.0,False
+Marquise,SI1,733,0.0,733.0,False
+Marquise,SI2,570,0.0,570.0,False
+Marquise,VS1,396,0.0,396.0,False
+Marquise,VS2,518,0.0,518.0,False
+Marquise,VVS1,213,0.0,213.0,False
+Marquise,VVS2,205,0.0,205.0,False
+Oval,I1,451,0.0,451.0,False
+Oval,I2,49,0.0,49.0,False
+Oval,I3,6,0.0,6.0,False
+Oval,IF,359,0.0,359.0,False
+Oval,SI1,3011,0.0,3011.0,False
+Oval,SI2,2907,0.0,2907.0,False
+Oval,VS1,2200,0.0,2200.0,False
+Oval,VS2,2231,0.0,2231.0,False
+Oval,VVS1,1315,0.0,1315.0,False
+Oval,VVS2,1328,0.0,1328.0,False
+Pear,I1,445,0.0,445.0,False
+Pear,I2,101,0.0,101.0,False
+Pear,I3,7,0.0,7.0,False
+Pear,IF,404,0.0,404.0,False
+Pear,SI1,2474,0.0,2474.0,False
+Pear,SI2,1974,0.0,1974.0,False
+Pear,VS1,1307,0.0,1307.0,False
+Pear,VS2,1627,0.0,1627.0,False
+Pear,VVS1,772,0.0,772.0,False
+Pear,VVS2,749,0.0,749.0,False
+Princess,I1,167,0.0,167.0,False
+Princess,I2,20,0.0,20.0,False
+Princess,I3,3,0.0,3.0,True
+Princess,IF,160,0.0,160.0,False
+Princess,SI1,1243,0.0,1243.0,False
+Princess,SI2,994,0.0,994.0,False
+Princess,VS1,1409,0.0,1409.0,False
+Princess,VS2,1359,0.0,1359.0,False
+Princess,VVS1,751,0.0,751.0,False
+Princess,VVS2,944,0.0,944.0,False
+Radiant,I1,128,0.0,128.0,False
+Radiant,I2,31,0.0,31.0,False
+Radiant,I3,4,0.0,4.0,True
+Radiant,IF,127,0.0,127.0,False
+Radiant,SI1,1195,0.0,1195.0,False
+Radiant,SI2,961,0.0,961.0,False
+Radiant,VS1,1047,0.0,1047.0,False
+Radiant,VS2,1090,0.0,1090.0,False
+Radiant,VVS1,460,0.0,460.0,False
+Radiant,VVS2,587,0.0,587.0,False
+Round,I1,5079,0.0,5079.0,False
+Round,I2,626,0.0,626.0,False
+Round,I3,52,0.0,52.0,False
+Round,IF,7772,0.0,7772.0,False
+Round,SI1,26456,13.0,26443.0,False
+Round,SI2,21405,40.0,21365.0,False
+Round,SI3,10,0.0,10.0,False
+Round,VS1,26154,0.0,26154.0,False
+Round,VS2,27392,0.0,27392.0,False
+Round,VVS1,21419,0.0,21419.0,False
+Round,VVS2,21951,0.0,21951.0,False
