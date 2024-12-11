@@ -173,10 +173,38 @@ The project revolves around managing an inventory of diamonds. Here’s a detail
     - **Diamond ID**: ID of the diamond being ordered.
     - **Quantity**: Number of items ordered.
     - **Total Price**: Total cost of the order.
+---
+
+### **12. `diamond_colorQuality.py`**
+- **Purpose**: Provides a graphical user interface (GUI) for the Diamond Recommendation System.
+- **Features**:
+  - Allows users to select:
+    - **color** (e.g., `D`, `E`).
+    - **polish** (e.g., `Good`, `Very Good` ).
+    - **Clarity** (e.g., `VS1`, `SI2`).
+  - Displays matching diamonds in a user-friendly GUI window.
+- **Returns**:
+  - A list of matching diamonds displayed in the GUI.
+  - An error message if no matches are found.
 
 ---
 
-### **. `11README.md`**
+### **12. `diamond_quality_recommendation.py`**
+- **Purpose**: Filters and recommends diamonds based on user-defined preferences.
+- **Features**:
+  - Filter diamonds by:
+    - **color** (e.g., `D`, `E`).
+    - **polish** (e.g., `Good`, `Very Good` ).
+    - **Clarity** (e.g., `VS1`, `SI2`).
+  - Displays matching diamonds based on the given criteria.
+- **Returns**:
+  - A list of diamonds matching the filters.
+  - If no matches are found, it returns a message: `No diamonds match the given preferences.`
+
+    
+
+
+### **13. `README.md`**
 - **Purpose**: Provides documentation for understanding the project files, their purpose, and how they work.
 
 ---
@@ -195,6 +223,8 @@ The project revolves around managing an inventory of diamonds. Here’s a detail
 | `smart_restocking.py`| Analyzes inventory and sales data to flag low-stock items.                 |
 | `test_recommendation.py` | Unit tests for diamond recommendation functionality.                   |
 | `test_inventory.py`  | Unit tests for inventory management functionality.                        |
+| `diamond_qcolorQuality.py` | Core logic for filtering and recommending diamonds based on user preferences. |
+| `diamond_quality_recommendation.py`| GUI for user-friendly diamond recommendation system. |
 | `README.md`          | Documentation for understanding and running the project.                  |
 
 ---
