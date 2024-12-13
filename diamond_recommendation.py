@@ -1,5 +1,5 @@
 import pandas as pd
-import os  # To detect test environment
+import os  
 
 class DiamondRecommendationSystem:
     def __init__(self, file_path):
@@ -55,7 +55,6 @@ class DiamondRecommendationSystem:
 
     def recommend(self, cut=None, carat_weight=None, clarity=None):
         """
-        Provide diamond recommendations based on user preferences.
         Display all matching diamonds.
         """
         print("\n--- User Preference-Based Recommendations ---")
