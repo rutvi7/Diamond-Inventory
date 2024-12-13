@@ -56,8 +56,7 @@ class DiamondRecommendationSystem:
 
     def recommend(self, color=None, polish=None, clarity=None):
         """
-        Provide diamond recommendations based on user preferences.
-        Display all matching diamonds, not just the top 5.
+        Display all matching diamonds.
         """
         print("\n--- User Preference-Based Recommendations ---")
         filtered = self.filter_diamonds(color=color, polish=polish, clarity=clarity)
