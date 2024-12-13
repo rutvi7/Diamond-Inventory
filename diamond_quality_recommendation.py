@@ -21,7 +21,6 @@ class DiamondQualityRecommendationSystem:
                            (self.df['polish'].str.lower() == polish.lower()) &
                            (self.df['clarity'].str.lower() == clarity.lower())]
 
-        # Select only relevant columns to display
         return filtered[["color", "polish", "clarity", "total_sales_price"]]
 
     def validate_color(self, color):
@@ -73,13 +72,13 @@ class DiamondQualityGUI:
         self.clear_button = tk.Button(master, text="Clear", command=self.clear_fields)
         self.clear_button.grid(row=5, column=1, pady=8, sticky="e", padx=8)
 
-        # Bind "Enter" key for navigation and submission
+        # "Enter" key for navigation and submission
         self.color_entry.bind("<Return>", lambda event: self.polish_entry.focus())
         self.polish_entry.bind("<Return>", lambda event: self.clarity_entry.focus())
         self.clarity_entry.bind("<Return>", lambda event: self.get_recommendations())
 
     def get_recommendations(self):
-        # Get user input
+        # User input
         color = self.color_entry.get().strip()
         polish = self.polish_entry.get().strip()
         clarity = self.clarity_entry.get().strip()
@@ -106,7 +105,7 @@ class DiamondQualityGUI:
             self.results.insert(tk.END, "No diamonds match the given preferences.")
 
     def clear_fields(self):
-        # Reset all fields to their default state
+        # Reset all fields 
         self.color_entry.delete(0, tk.END)
         self.polish_entry.delete(0, tk.END)
         self.clarity_entry.delete(0, tk.END)
@@ -114,9 +113,8 @@ class DiamondQualityGUI:
 
 # Main Function
 if __name__ == "__main__":
-    FILE_PATH = "diamonds_updated.csv"  # Update this to your dataset's file path
-    recommendation_system = DiamondQualityRecommendationSystem(FILE_PATH)  # Create an instance
-
+    FILE_PATH = "diamonds_updated.csv"  
+    recommendation_system = DiamondQualityRecommendationSystem(FILE_PATH)  
     root = tk.Tk()
     gui = DiamondQualityGUI(root, recommendation_system)  # Pass the instance to the GUI
     root.mainloop()
