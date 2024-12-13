@@ -9,7 +9,6 @@ class DiamondRecommendationSystem:
         # Load dataset and ensure correct column names
         self.df = pd.read_csv(file_path, low_memory=False)
         print("Dataset loaded successfully with", len(self.df), "rows.")
-        # Check and rename columns for consistency
         if 'carat_weight' in self.df.columns:
             self.df.rename(columns={'carat_weight': 'carat'}, inplace=True)
 
@@ -20,7 +19,6 @@ class DiamondRecommendationSystem:
         return []
 
     def filter_diamonds(self, cut, carat_min, carat_max, clarity, cut_quality, lab):
-        # Ensure necessary columns are present
         required_columns = {'cut', 'carat', 'clarity', 'cut_quality', 'lab', 'total_sales_price', 'stock_id'}
         if not required_columns.issubset(self.df.columns):
             missing = required_columns - set(self.df.columns)
