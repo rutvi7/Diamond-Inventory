@@ -6,7 +6,6 @@ from tkinter import ttk, messagebox
 class DiamondRecommendationSystem:
     def __init__(self, file_path):
         self.file_path = file_path
-        # Load dataset and ensure correct column names
         self.df = pd.read_csv(file_path, low_memory=False)
         print("Dataset loaded successfully with", len(self.df), "rows.")
         if 'carat_weight' in self.df.columns:
@@ -97,7 +96,7 @@ class DiamondGUI:
 
         self.scrollbar.config(command=self.results.yview)
 
-        # Clear Button (placed after results, aligned right)
+        # Clear Button 
         self.clear_button = tk.Button(master, text="Clear", command=self.clear_fields)
         self.clear_button.grid(row=8, column=1, pady=8, sticky="e", padx=8)
 
@@ -123,7 +122,7 @@ class DiamondGUI:
         filtered = self.recommendation_system.filter_diamonds(
             cut=cut, carat_min=carat_min, carat_max=carat_max, clarity=clarity, cut_quality=cut_quality, lab=lab
         )
-        self.results.delete(1.0, tk.END)  # Clear previous results
+        self.results.delete(1.0, tk.END)  
 
         if filtered is not None and not filtered.empty:
             # Display the count of stones
@@ -145,8 +144,8 @@ class DiamondGUI:
 
 # Main Function
 if __name__ == "__main__":
-    FILE_PATH = "diamonds.csv"  # Update this to your dataset's file path
-    recommendation_system = DiamondRecommendationSystem(FILE_PATH)  # Create an instance
+    FILE_PATH = "diamonds.csv"  
+    recommendation_system = DiamondRecommendationSystem(FILE_PATH)  
 
     root = tk.Tk()
     gui = DiamondGUI(root, recommendation_system)  # Pass the instance to the GUI
